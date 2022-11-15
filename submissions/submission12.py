@@ -7,7 +7,6 @@ from tqdm import tqdm
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.svm import LinearSVC
-from sklearn.linear_model import Perceptron
 
 # 7584
 
@@ -38,20 +37,11 @@ data = pd.read_csv("train_data.csv").values
 
 characters_to_remove = '\n\"\'-.,()[]{}¿?¡!+=«»:;'
 
-weights = []
 
 for i in range(len(data)):
     for c in characters_to_remove:
         data[i][1] = data[i][1].replace(c, " ")
     data[i][1] = np.array(data[i][1].split())
-    weights.append(data[i][2])
-
-weights = np.unique(weights, return_counts=True)[1]/len(weights)
-weights_dict = {
-    'England': weights[0],
-    'Ireland': weights[1],
-    'Scotland': weights[2],
-}
 
 # for splitting
 
@@ -105,7 +95,7 @@ BOW_ALL[1] = vectorizer_all.transform(BOW_ALL[1])
 mnb_language = MultinomialNB(alpha=0.5)
 mnb_language.fit(BOW_ALL[1], BOW_ALL[2])
 
-mnb_Dansk = Perceptron(eta0=0.5, n_jobs=-1, max_iter=10000, early_stopping=True, class_weight=weights_dict)
+mnb_Dansk = LinearSVC(C=0.5, max_iter=10000)
 vectorizer_Dansk = CountVectorizer(tokenizer = lambda x:x,    # data e deja procesat, nu mai e nevoie de tokenizer aici
                              preprocessor = lambda x:x,  #  data e deja procesat, nu mai e nevoie de tokenizer aici
                              max_features = 100000)
@@ -113,7 +103,7 @@ vectorizer_Dansk.fit(BOW_Dansk[1])
 X_train_Dansk = vectorizer_Dansk.transform(BOW_Dansk[1])
 mnb_Dansk.fit(X_train_Dansk, BOW_Dansk[2])
 
-mnb_Deutsch = Perceptron(eta0=0.5, n_jobs=-1, max_iter=10000, early_stopping=True, class_weight=weights_dict)
+mnb_Deutsch = LinearSVC(C=0.5, max_iter=10000)
 vectorizer_Deutsch = CountVectorizer(tokenizer = lambda x:x,    # data e deja procesat, nu mai e nevoie de tokenizer aici
                              preprocessor = lambda x:x,  #  data e deja procesat, nu mai e nevoie de tokenizer aici
                              max_features = 100000)
@@ -121,7 +111,7 @@ vectorizer_Deutsch.fit(BOW_Deutsch[1])
 X_train_Deutsch = vectorizer_Deutsch.transform(BOW_Deutsch[1])
 mnb_Deutsch.fit(X_train_Deutsch, BOW_Deutsch[2])
 
-mnb_Espanol = Perceptron(eta0=0.5, n_jobs=-1, max_iter=10000, early_stopping=True, class_weight=weights_dict)
+mnb_Espanol = LinearSVC(C=0.5, max_iter=10000)
 vectorizer_Espanol = CountVectorizer(tokenizer = lambda x:x,    # data e deja procesat, nu mai e nevoie de tokenizer aici
                              preprocessor = lambda x:x,  #  data e deja procesat, nu mai e nevoie de tokenizer aici
                              max_features = 100000)
@@ -129,7 +119,7 @@ vectorizer_Espanol.fit(BOW_Espanol[1])
 X_train_Espanol = vectorizer_Espanol.transform(BOW_Espanol[1])
 mnb_Espanol.fit(X_train_Espanol, BOW_Espanol[2])
 
-mnb_Italiano = Perceptron(eta0=0.5, n_jobs=-1, max_iter=10000, early_stopping=True, class_weight=weights_dict)
+mnb_Italiano = LinearSVC(C=0.5, max_iter=10000)
 vectorizer_Italiano = CountVectorizer(tokenizer = lambda x:x,    # data e deja procesat, nu mai e nevoie de tokenizer aici
                              preprocessor = lambda x:x,  #  data e deja procesat, nu mai e nevoie de tokenizer aici
                              max_features = 100000)
@@ -137,7 +127,7 @@ vectorizer_Italiano.fit(BOW_Italiano[1])
 X_train_Italiano = vectorizer_Italiano.transform(BOW_Italiano[1])
 mnb_Italiano.fit(X_train_Italiano, BOW_Italiano[2])
 
-mnb_Nederlands = Perceptron(eta0=0.5, n_jobs=-1, max_iter=10000, early_stopping=True, class_weight=weights_dict)
+mnb_Nederlands = LinearSVC(C=0.5, max_iter=10000)
 vectorizer_Nederlands = CountVectorizer(tokenizer = lambda x:x,    # data e deja procesat, nu mai e nevoie de tokenizer aici
                              preprocessor = lambda x:x,  #  data e deja procesat, nu mai e nevoie de tokenizer aici
                              max_features = 100000)

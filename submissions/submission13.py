@@ -105,7 +105,7 @@ BOW_ALL[1] = vectorizer_all.transform(BOW_ALL[1])
 mnb_language = MultinomialNB(alpha=0.5)
 mnb_language.fit(BOW_ALL[1], BOW_ALL[2])
 
-mnb_Dansk = Perceptron(eta0=0.5, n_jobs=-1, max_iter=10000, early_stopping=True, class_weight=weights_dict)
+mnb_Dansk = Perceptron(eta0=0.1, n_jobs=-1, max_iter=10000, early_stopping=True, class_weight=weights_dict)
 vectorizer_Dansk = CountVectorizer(tokenizer = lambda x:x,    # data e deja procesat, nu mai e nevoie de tokenizer aici
                              preprocessor = lambda x:x,  #  data e deja procesat, nu mai e nevoie de tokenizer aici
                              max_features = 100000)
@@ -113,7 +113,7 @@ vectorizer_Dansk.fit(BOW_Dansk[1])
 X_train_Dansk = vectorizer_Dansk.transform(BOW_Dansk[1])
 mnb_Dansk.fit(X_train_Dansk, BOW_Dansk[2])
 
-mnb_Deutsch = Perceptron(eta0=0.5, n_jobs=-1, max_iter=10000, early_stopping=True, class_weight=weights_dict)
+mnb_Deutsch = Perceptron(eta0=0.1, n_jobs=-1, max_iter=10000, early_stopping=True, class_weight=weights_dict)
 vectorizer_Deutsch = CountVectorizer(tokenizer = lambda x:x,    # data e deja procesat, nu mai e nevoie de tokenizer aici
                              preprocessor = lambda x:x,  #  data e deja procesat, nu mai e nevoie de tokenizer aici
                              max_features = 100000)
@@ -121,7 +121,7 @@ vectorizer_Deutsch.fit(BOW_Deutsch[1])
 X_train_Deutsch = vectorizer_Deutsch.transform(BOW_Deutsch[1])
 mnb_Deutsch.fit(X_train_Deutsch, BOW_Deutsch[2])
 
-mnb_Espanol = Perceptron(eta0=0.5, n_jobs=-1, max_iter=10000, early_stopping=True, class_weight=weights_dict)
+mnb_Espanol = Perceptron(eta0=0.1, n_jobs=-1, max_iter=10000, early_stopping=True, class_weight=weights_dict)
 vectorizer_Espanol = CountVectorizer(tokenizer = lambda x:x,    # data e deja procesat, nu mai e nevoie de tokenizer aici
                              preprocessor = lambda x:x,  #  data e deja procesat, nu mai e nevoie de tokenizer aici
                              max_features = 100000)
@@ -129,7 +129,7 @@ vectorizer_Espanol.fit(BOW_Espanol[1])
 X_train_Espanol = vectorizer_Espanol.transform(BOW_Espanol[1])
 mnb_Espanol.fit(X_train_Espanol, BOW_Espanol[2])
 
-mnb_Italiano = Perceptron(eta0=0.5, n_jobs=-1, max_iter=10000, early_stopping=True, class_weight=weights_dict)
+mnb_Italiano = Perceptron(eta0=0.1, n_jobs=-1, max_iter=10000, early_stopping=True, class_weight=weights_dict)
 vectorizer_Italiano = CountVectorizer(tokenizer = lambda x:x,    # data e deja procesat, nu mai e nevoie de tokenizer aici
                              preprocessor = lambda x:x,  #  data e deja procesat, nu mai e nevoie de tokenizer aici
                              max_features = 100000)
@@ -137,7 +137,7 @@ vectorizer_Italiano.fit(BOW_Italiano[1])
 X_train_Italiano = vectorizer_Italiano.transform(BOW_Italiano[1])
 mnb_Italiano.fit(X_train_Italiano, BOW_Italiano[2])
 
-mnb_Nederlands = Perceptron(eta0=0.5, n_jobs=-1, max_iter=10000, early_stopping=True, class_weight=weights_dict)
+mnb_Nederlands = Perceptron(eta0=0.1, n_jobs=-1, max_iter=10000, early_stopping=True, class_weight=weights_dict)
 vectorizer_Nederlands = CountVectorizer(tokenizer = lambda x:x,    # data e deja procesat, nu mai e nevoie de tokenizer aici
                              preprocessor = lambda x:x,  #  data e deja procesat, nu mai e nevoie de tokenizer aici
                              max_features = 100000)
