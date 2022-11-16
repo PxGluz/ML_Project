@@ -186,7 +186,7 @@ for i in tqdm(range(len(test_data))):
     else:
         predictions.extend(['Ireland'])
 
-# result = np.bincount(np.array(predictions) == test_labels)
+# result = np.bincount(np.array(predictions) == test_labels)/len(test_labels)
 # print(result)
 
 writer.writerow(['id', 'label'])
